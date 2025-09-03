@@ -8,7 +8,8 @@ export default function Chat() {
     { id: crypto.randomUUID(), role: "assistant", content: "Hi! I’m your AI assistant. Ask me anything. 🧠💬" },
   ]);
   const [input, setInput] = useState("");
-  const [model, setModel] = useState("gpt-4.1-mini");
+  // Change the initial state to a valid Gemini model
+  const [model, setModel] = useState("gemini-1.5-flash"); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const listRef = useRef(null);
@@ -74,8 +75,9 @@ export default function Chat() {
               <div className="small">{error ? "Error — try again" : ""}</div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <select value={model} onChange={(e) => setModel(e.target.value)} className="ghost">
-                  <option value="gpt-4.1-mini">gpt-4.1-mini</option>
-                  <option value="gpt-4o-mini">gpt-4o-mini</option>
+                  {/* Change the options to use valid Gemini models */}
+                  <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                  <option value="gemini-1.5-pro">gemini-1.5-pro</option>
                 </select>
                 <button className="btn" disabled={!canSend} onClick={handleSend}>
                   <SendIcon /> {loading ? "Sending…" : "Send"}
@@ -84,7 +86,7 @@ export default function Chat() {
               </div>
             </div>
           </div>
-          <div className="small" style={{ marginTop: 8 }}>Backend: <code>{import.meta.env.VITE_API_BASE || "/api"}</code> • Set <code>OPENAI_API_KEY</code> on the server.</div>
+          <div className="small" style={{ marginTop: 8 }}>Backend: <code>{import.meta.env.VITE_API_BASE || "/api"}</code> • Set <code>GEMINI_API_KEY</code> on the server.</div>
         </div>
       </div>
     </div>
