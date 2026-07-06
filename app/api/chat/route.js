@@ -10,7 +10,7 @@ export async function POST(req) {
     const { messages, model } = await req.json();
 
     const result = await streamText({
-      model: google(model || 'models/gemini-1.5-flash'),
+      model: google(model || 'gemini-1.5-flash'),
       messages,
     });
 

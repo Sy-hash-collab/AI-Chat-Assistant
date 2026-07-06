@@ -5,7 +5,7 @@ import MessageBubble from "./MessageBubble.jsx";
 import { SendIcon } from "./Icons.jsx";
 
 export default function Chat() {
-  const [model, setModel] = useState("models/gemini-1.5-flash");
+  const [model, setModel] = useState("gemini-1.5-flash");
   
   const { messages, input, handleInputChange, handleSubmit, isLoading, error, setMessages } = useChat({
     api: '/api/chat',
@@ -67,8 +67,8 @@ export default function Chat() {
               <div className="small"></div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <select value={model} onChange={(e) => setModel(e.target.value)} className="ghost">
-                  <option value="models/gemini-1.5-flash">gemini-1.5-flash</option>
-                  <option value="models/gemini-1.5-pro">gemini-1.5-pro</option>
+                  <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                  <option value="gemini-1.5-pro">gemini-1.5-pro</option>
                 </select>
                 <button type="submit" className="btn" disabled={!canSend}>
                   <SendIcon /> {isLoading ? "Sending…" : "Send"}
